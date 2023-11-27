@@ -10,6 +10,19 @@ public class EventsUI : MonoBehaviour
 
     #endregion
 
+    void OnEnable()
+    {
+        EventsGameManager.OnEnterKeyPressed += UpdateText;
+        EventsGameManager.OnEscapeKeyPressed += InitializeText;
+    }
+
+
+    void OnDisable()
+    {
+        EventsGameManager.OnEnterKeyPressed -= UpdateText;
+        EventsGameManager.OnEscapeKeyPressed -= InitializeText;
+    }
+
     private void Awake()
     {
         InitializeText();

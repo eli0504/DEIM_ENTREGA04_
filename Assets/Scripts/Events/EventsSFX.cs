@@ -8,6 +8,19 @@ public class EventsSFX : MonoBehaviour
 
     #endregion
 
+    void OnEnable()
+    {
+        EventsGameManager.OnEnterKeyPressed += StartParticleSystem;
+        EventsGameManager.OnEscapeKeyPressed += StopParticleSystem;
+    }
+
+
+    void OnDisable()
+    {
+        EventsGameManager.OnEnterKeyPressed -= StartParticleSystem;
+        EventsGameManager.OnEscapeKeyPressed -= StopParticleSystem;
+    }
+
     private void Awake()
     {
         StopParticleSystem();

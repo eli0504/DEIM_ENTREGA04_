@@ -11,8 +11,22 @@ public class EventsPlayerController : MonoBehaviour
     private Color myGreen = new Color(142f/255f, 226f/255f, 162f/255f);
 
     private Transform enemy;
-    
+
     #endregion
+
+    void OnEnable()
+    {
+        EventsGameManager.OnEnterKeyPressed += ChangeColorToGreen;
+        EventsGameManager.OnEscapeKeyPressed += ChangeColorToOriginal;
+    }
+
+
+    void OnDisable()
+    {
+        EventsGameManager.OnEnterKeyPressed -= ChangeColorToGreen;
+        EventsGameManager.OnEscapeKeyPressed -= ChangeColorToOriginal;
+    }
+
 
     private void Awake()
     {

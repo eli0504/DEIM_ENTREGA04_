@@ -20,6 +20,20 @@ public class EventsEnemy : MonoBehaviour
 
     #endregion
 
+    void OnEnable()
+    {
+        EventsGameManager.OnEnterKeyPressed += StopMovement;
+        EventsGameManager.OnEscapeKeyPressed += RestartMovement;
+    }
+
+
+    void OnDisable()
+    {
+        EventsGameManager.OnEnterKeyPressed -= StopMovement;
+        EventsGameManager.OnEscapeKeyPressed -= RestartMovement;
+    }
+
+
     private void Awake()
     {
         canMove = true;
